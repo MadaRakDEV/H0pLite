@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import MatrixRain from './components/MatrixRain';
 import YautjaText from './components/YautjaText';
+import { useBgm } from './components/BgmContext';
 import styles from './page.module.css';
 
 const VALID_USER = 'H3-NE129118';
@@ -12,6 +13,7 @@ const VALID_PASS = 'Ryuketsu';
 
 export default function LoginPage() {
   const router = useRouter();
+  const { startBgm } = useBgm();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -31,6 +33,7 @@ export default function LoginPage() {
     setLoading(false);
 
     if (username.trim() === VALID_USER && password === VALID_PASS) {
+      startBgm(); // el gesto de iniciar sesión permite el autoplay del BGM
       router.push('/terminal');
     } else {
       setError('ACCESO DENEGADO');
