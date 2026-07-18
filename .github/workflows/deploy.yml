@@ -31,6 +31,8 @@ jobs:
         run: npm ci
 
       - name: Build with Next.js (static export)
+        env:
+          GITHUB_PAGES: '1'
         run: npm run build
 
       - name: Upload artifact
