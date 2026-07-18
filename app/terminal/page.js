@@ -19,7 +19,7 @@ const WARNING = [
   '║   HEXTON ᴮⁱᵒᵗᵉᶜʰ  ·  DIVISIÓN DE SEGURIDAD COGNITIVA         ║',
   '╚══════════════════════════════════════════════════════════════╝',
   '',
-  'AVISO DE ACCESO RESTRINGIDO — NIVEL Ω',
+  'AVISO DE ACCESO RESTRINGIDO',
   '',
   'La información almacenada en este terminal es PROPIEDAD CLASIFICADA',
   'de HEXTON Biotech y se encuentra protegida bajo los protocolos de',
@@ -98,7 +98,6 @@ export default function TerminalPage() {
       // El aviso se elimina al aceptar
       setLog([
         'ACCESO AUTORIZADO. cargando ficha operativa...',
-        'Navegue el árbol con el cursor o con las flechas del teclado.',
         '',
       ]);
       setPhase('ready');
@@ -294,9 +293,8 @@ function TreeNode({ node, path, depth, expanded, toggle, selectedId, selectNode 
     <div role="treeitem" aria-selected={isSelected} aria-expanded={isFolder ? isOpen : undefined}>
       <button
         type="button"
-        className={`${styles.treeItem} ${node.type === 'folder' ? styles.treeFolder : styles.treeLeaf} ${
-          isSelected ? styles.treeItemSelected : ''
-        }`}
+        className={`${styles.treeItem} ${node.type === 'folder' ? styles.treeFolder : styles.treeLeaf} ${isSelected ? styles.treeItemSelected : ''
+          }`}
         style={{ paddingLeft: `${0.6 + depth * 1.1}rem` }}
         onClick={handleClick}
         tabIndex={0}
@@ -341,7 +339,7 @@ function ContentPane({ selectedId, root }) {
   if (!node) {
     return (
       <p className={styles.contentEmpty}>
-        Seleccione un elemento del árbol para ver su contenido.
+        —
       </p>
     );
   }
